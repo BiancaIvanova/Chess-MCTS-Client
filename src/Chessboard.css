@@ -1,0 +1,39 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.chessboard {
+  display: flex;
+  flex-direction: column;
+
+  aspect-ratio: 1 / 1;
+  width: min(85dvw, 85dvh, 550px);
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.square {
+  flex: 1;
+  aspect-ratio: 1 / 1;
+}
+
+.square.light {
+  background-color: #ebeaea;
+}
+
+.square.dark {
+  background-color: #525274;
+}

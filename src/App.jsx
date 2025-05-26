@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import api from '.api/axiosConfig'
+
 import './App.css'
+import Chessboard from './Chessboard';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -30,7 +32,7 @@ function App() {
     // </>
 
     <>
-    
+    <Chessboard />
     </>
   )
 }

@@ -28,7 +28,26 @@ const Chessboard = () => {
         );
     }
 
-    return <div className="chessboard">{squares}</div>
+    const letterLabels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+    const numberLabels = [8, 7, 6, 5, 4, 3, 2, 1]
+
+    return (
+        <div className="board-container">
+            <div className="number-labels">
+                {numberLabels.map((n, i) => (
+                    <div key={i} className="number-label">{n}</div>
+                ))}
+            </div>
+
+            <div className="chessboard">{squares}</div>
+
+            <div className="letter-labels">
+                {letterLabels.map((l, i) => (
+                    <div key={i} className="letter-label">{l}</div>
+                ))}
+            </div>
+        </div>
+    )
 }
 
 export default Chessboard;

@@ -10,13 +10,26 @@ html, body {
   background-color: #f0f0f0;
 }
 
+.board-container {
+  position: relative;
+  display: inline-flex;
+  padding: 0.5em;
+
+  aspect-ratio: 1 / 1;
+  align-items: center;
+  justify-content: center;
+}
+
 .chessboard {
   display: flex;
   flex-direction: column;
 
   aspect-ratio: 1 / 1;
-  width: min(85dvw, 85dvh, 550px);
+  width: min(82dvw, 82dvh, 550px);
   margin: auto;
+
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 700;
 }
 
 .row {
@@ -36,4 +49,50 @@ html, body {
 
 .square.dark {
   background-color: #525274;
+}
+
+.number-labels {
+    position: absolute;
+    inset: 0 auto auto -2.0em;
+    height: calc(100% - 1em);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    font-size: 0.9em;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 700;
+
+    margin: 0.5em;
+}
+
+.number-label {
+    height: 12.5%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.letter-labels {
+    position: absolute;
+    inset: auto auto -1em -0.5em;
+    width: calc(100% + 1em);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    font-size: 0.9em;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 700;
+}
+
+.letter-label {
+    height: 12.5%; /* percentage of the parent container */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

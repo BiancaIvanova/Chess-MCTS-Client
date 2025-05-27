@@ -6,10 +6,79 @@
     width: 25px;
     height: 25px;
 
-    z-index: 999;
+    z-index: 1000;
 }
 
 .github-container img {
     width: 25px;
     height: 25px;
+}
+
+.theme-toggle {
+    position: absolute;
+    display: flex;
+
+    top: 10px;
+    right: 10px;
+
+    justify-content: center;
+    z-index: 1000;
+}
+
+.theme-toggle button {
+    margin: 4px;
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+
+    background-color: #fcfcfc;
+    border: 0px;
+    border-radius: 3.5px;
+
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    height: 35px;
+    width: 35px;
+    aspect-ratio: 1 / 1;
+}
+
+.theme-toggle button:hover {
+    background-color: #f5f5f5;
+    border: 0px;
+}
+
+.theme-toggle button.active {
+    background-color: #e6e6e6;
+}
+
+.svg-icon {
+    background-color: #3b3b3b;
+    width: 220%;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 90%;
+
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+}
+
+.sun-icon {
+    mask-image: url("https://ka-p.fontawesome.com/releases/v6.6.0/svgs/regular/sun-bright.svg?v=2&token=a463935e93");
+    -webkit-mask-image: url("https://ka-p.fontawesome.com/releases/v6.6.0/svgs/regular/sun-bright.svg?v=2&token=a463935e93");
+}
+
+.system-icon {
+    mask-image: url("https://ka-p.fontawesome.com/releases/v6.6.0/svgs/regular/desktop.svg?v=2&token=a463935e93&quot");
+    -webkit-mask-image: url("https://ka-p.fontawesome.com/releases/v6.6.0/svgs/regular/desktop.svg?v=2&token=a463935e93&quot");
+}
+
+.moon-icon {
+    mask-image: url("https://ka-p.fontawesome.com/releases/v6.6.0/svgs/regular/moon.svg?v=2&token=a463935e93&quot");
+    -webkit-mask-image: url("https://ka-p.fontawesome.com/releases/v6.6.0/svgs/regular/moon.svg?v=2&token=a463935e93&quot");
 }

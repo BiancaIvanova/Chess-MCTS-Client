@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './FloatingUI.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun } from '@fortawesome/free-solid-svg-icons';
+
 
 export const GitHubLink = () => {
     return (
@@ -15,8 +18,56 @@ export const GitHubLink = () => {
     )
 }
 
-export const DarkTheme = () => {
+export const ThemeToggle = () => {
+    const [theme, setTheme] = useState('system');
+
+    const applyTheme = () => {
+        if (theme == "light")
+        {
+            document.body.classList.add('light-mode')
+            document.body.classList.remove('dark-mode')
+        }
+        else if (theme == "dark")
+        {
+            document.body.classList.add('dark-mode')
+            document.body.classList.remove('light-mode')
+        }
+        else
+        {
+            document.body.classList.remove('light-mode')
+            document.body.classList.remove('dark-mode')
+        }
+    };
+
+    useEffect(() => {
+        applyTheme(theme);
+    }, [theme]);
+
     return (
-        <button className="dark-theme-container" onClick={toggleTheme}/>
+        <div className="theme-toggle">
+            <button
+                className={theme === 'light' ? 'active' : ''}
+                onClick={() => setTheme('light')}
+                aria-label="Light mode"
+            >
+                <div className="svg-icon sun-icon"/>
+            </button>
+
+            <button
+                className={theme === 'system' ? 'active' : ''}
+                onClick={() => setTheme('system')}
+                aria-label="System mode"
+            >
+                <div className="svg-icon system-icon"/>
+            </button>
+
+            <button
+                className={theme === 'dark' ? 'active' : ''}
+                onClick={() => setTheme('dark')}
+                aria-label="Dark mode"
+            >
+                <div className="svg-icon moon-icon"/>
+            </button>
+        </div>
     )
 }

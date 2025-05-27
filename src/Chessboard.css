@@ -13,33 +13,38 @@ html, body {
 .board-container {
   position: relative;
   display: inline-flex;
-  padding: 0.5em;
-
+ 
+  width: min(82dvw, 82dvh, 550px);
   aspect-ratio: 1 / 1;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .chessboard {
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+
+  justify-content: center;
+  align-items: center;
 
   aspect-ratio: 1 / 1;
-  width: min(82dvw, 82dvh, 550px);
-  margin: auto;
-
-  font-family: 'Titillium Web', sans-serif;
-  font-weight: 700;
+  width: 100%;
+  height: 100%;
 }
 
 .row {
   display: flex;
-  flex-direction: row;
-  flex: 1;
+  height: 12.5%;
+  width: 100%;
 }
 
 .square {
   flex: 1;
+  width: 12.5%;
+  height: 100%;
   aspect-ratio: 1 / 1;
 }
 
@@ -53,7 +58,7 @@ html, body {
 
 .number-labels {
     position: absolute;
-    inset: 0 auto auto -2.0em;
+    inset: 0 auto auto -1.8em;
     height: calc(100% - 1em);
 
     display: flex;
@@ -77,8 +82,8 @@ html, body {
 
 .letter-labels {
     position: absolute;
-    inset: auto auto -1em -0.5em;
-    width: calc(100% + 1em);
+    inset: auto auto -1.6em 0;
+    width: 100%;
 
     display: flex;
     flex-direction: row;

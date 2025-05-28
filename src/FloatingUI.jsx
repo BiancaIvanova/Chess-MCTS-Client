@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './FloatingUI.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun } from '@fortawesome/free-solid-svg-icons';
-
 
 export const GitHubLink = () => {
     return (

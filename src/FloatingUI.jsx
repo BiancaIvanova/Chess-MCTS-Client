@@ -19,28 +19,58 @@ export const GitHubLink = () => {
 }
 
 export const ThemeToggle = () => {
-    const [theme, setTheme] = useState('system');
+    const [theme, setTheme] = useState(() => {
+        return localStorage.getItem('theme') || 'system';
+    })
 
-    const applyTheme = () => {
-        if (theme == "light")
+    const applyTheme = (themeValue) => {
+        if (themeValue === "light")
         {
             document.body.classList.add('light-mode')
             document.body.classList.remove('dark-mode')
         }
-        else if (theme == "dark")
+        else if (themeValue === "dark")
         {
             document.body.classList.add('dark-mode')
             document.body.classList.remove('light-mode')
         }
         else
         {
-            document.body.classList.remove('light-mode')
-            document.body.classList.remove('dark-mode')
+            const darkPreference = window.matchMedia("(prefers-color-scheme: dark)").matches; 
+
+            if (darkPreference) {
+                document.body.classList.add('dark-mode')
+                document.body.classList.remove('light-mode')
+            } else {
+                document.body.classList.add('light-mode')
+                document.body.classList.remove('dark-mode')
+            }
         }
     };
 
     useEffect(() => {
-        applyTheme(theme);
+        localStorage.setItem('theme', theme);
+
+        if (theme === 'system') 
+        {
+            const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+            const handler = () => {
+                applyTheme('system');
+            }
+
+            mediaQuery.addEventListener('change', handler);
+
+            applyTheme('system');
+
+            return () => mediaQuery.removeEventListener('change', handler);
+        }
+        else
+        {
+            applyTheme(theme);
+        }
+
+        
     }, [theme]);
 
     return (

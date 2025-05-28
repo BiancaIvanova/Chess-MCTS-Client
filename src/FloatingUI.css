@@ -12,6 +12,12 @@
 .github-container img {
     width: 25px;
     height: 25px;
+
+    transition: filter 0.3s ease-in-out;
+}
+
+body.dark-mode .github-container img {
+    filter: brightness(0) invert(1);
 }
 
 .theme-toggle {
@@ -44,17 +50,30 @@
     aspect-ratio: 1 / 1;
 }
 
-.theme-toggle button:hover {
+body.light-mode .theme-toggle button {
+    background-color: #fcfcfc;
+}
+body.light-mode .theme-toggle button:hover {
     background-color: #f5f5f5;
     border: 0px;
 }
-
-.theme-toggle button.active {
+body.light-mode .theme-toggle button.active {
     background-color: #e6e6e6;
 }
 
+
+body.dark-mode .theme-toggle button {
+    background-color: #1f1f1f;
+}
+body.dark-mode .theme-toggle button:hover {
+    background-color: #2b2b2b;
+    border: 0px;
+}
+body.dark-mode .theme-toggle button.active {
+    background-color: #343434;
+}
+
 .svg-icon {
-    background-color: #3b3b3b;
     width: 220%;
     aspect-ratio: 1 / 1;
     flex-shrink: 0;
@@ -68,17 +87,25 @@
     -webkit-mask-size: contain;
 }
 
+body.light-mode .svg-icon {
+    background-color: #3b3b3b;
+}
+
+body.dark-mode .svg-icon {
+    background-color: #fdfdfd;
+}
+
 .sun-icon {
     mask-image: url("https://ka-p.fontawesome.com/releases/v6.6.0/svgs/regular/sun-bright.svg?v=2&token=a463935e93");
     -webkit-mask-image: url("https://ka-p.fontawesome.com/releases/v6.6.0/svgs/regular/sun-bright.svg?v=2&token=a463935e93");
 }
 
 .system-icon {
-    mask-image: url("https://ka-p.fontawesome.com/releases/v6.6.0/svgs/regular/desktop.svg?v=2&token=a463935e93&quot");
-    -webkit-mask-image: url("https://ka-p.fontawesome.com/releases/v6.6.0/svgs/regular/desktop.svg?v=2&token=a463935e93&quot");
+    mask-image: url("https://ka-p.fontawesome.com/releases/v6.6.0/svgs/regular/desktop.svg?v=2&token=a463935e93");
+    -webkit-mask-image: url("https://ka-p.fontawesome.com/releases/v6.6.0/svgs/regular/desktop.svg?v=2&token=a463935e93");
 }
 
 .moon-icon {
-    mask-image: url("https://ka-p.fontawesome.com/releases/v6.6.0/svgs/regular/moon.svg?v=2&token=a463935e93&quot");
-    -webkit-mask-image: url("https://ka-p.fontawesome.com/releases/v6.6.0/svgs/regular/moon.svg?v=2&token=a463935e93&quot");
+    mask-image: url("https://ka-p.fontawesome.com/releases/v6.6.0/svgs/regular/moon.svg?v=2&token=a463935e93");
+    -webkit-mask-image: url("https://ka-p.fontawesome.com/releases/v6.6.0/svgs/regular/moon.svg?v=2&token=a463935e93");
 }

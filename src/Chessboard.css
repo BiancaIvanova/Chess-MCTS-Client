@@ -7,7 +7,6 @@ html, body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: #f0f0f0;
 }
 
 .board-container {

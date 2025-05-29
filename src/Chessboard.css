@@ -45,6 +45,8 @@ html, body {
   width: 12.5%;
   height: 100%;
   aspect-ratio: 1 / 1;
+
+  transition: background-color 0.3s;
 }
 
 .square.light {
@@ -53,6 +55,14 @@ html, body {
 
 .square.dark {
   background-color: #525274;
+}
+
+.square.light:hover {
+  background-color: #cecece;
+}
+
+.square.dark:hover {
+  background-color: #454560;
 }
 
 .number-labels {

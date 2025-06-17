@@ -40,42 +40,22 @@ const Chessboard = () => {
 
     const squares = [];
 
-    if (!boardState)
-    {
-        return <div>Loading board...</div>;
-    }
+    for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < columns; col++) {
+        const isDark = (row + col) % 2 === 1;
+        const piece = boardState?.[row]?.[col] || null;
 
-    for (let row = 0; row < rows; row++)
-    {
-        const rowSquares = [];
-
-        for (let column = 0; column < columns; column++)
-        {
-            const isDark = (row + column) % 2 === 1;
-            let piece = null;
-
-            if (boardState && boardState[row] && boardState[row][column])
-            {
-                piece = boardState[row][column];
-            }
-
-            rowSquares.push(
-                <div
-                    key={`${row}-${column}`}
-                    className={`square ${isDark ? 'dark' : 'light'}`}
-                >
-                    {renderPiece(piece)}
-                </div>
-            );
-
-            console.log(`Rendering row ${row}`); // remove when done
-        }
         squares.push(
-            <div key={row} className="row">
-                {rowSquares}
-            </div>
+        <div
+            key={`${row}-${col}`}
+            className={`square ${isDark ? 'dark' : 'light'}`}
+        >
+            {renderPiece(piece)}
+        </div>
         );
     }
+    }
+
 
     return (
         <div className="board-container">

@@ -40,3 +40,23 @@
 .read-the-docs {
   color: #888;
 }
+
+.app-main {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: min(4vw, 4vh);
+    width: 100%;
+}
+
+.board-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 950px) {
+    .app-main {
+        flex-direction: column;
+        align-items: center;
+    }
+}

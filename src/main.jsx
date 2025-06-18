@@ -3,10 +3,12 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
-// import '@fontawesome/fontawesome-free/all.min.css'
+import { UIStateProvider } from './UIStateContext';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <UIStateProvider>
+      <App />
+    </UIStateProvider>
   </StrictMode>,
 )

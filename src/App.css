@@ -37,24 +37,21 @@
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
-}
-
 .app-main {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    gap: min(4vw, 4vh);
+    gap: min(3.5vw, 3.5vh);
     width: 100%;
 }
 
 .board-wrapper {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0; 
 }
 
-@media (max-width: 950px) {
+@media (max-aspect-ratio: 31/20) {
     .app-main {
         flex-direction: column;
         align-items: center;

@@ -135,9 +135,9 @@ const Chessboard = ({ setLoading, setErrorText, setShowMessage }) => {
 
     return (
         <div className="board-container">
-        <div className="number-labels">{numberLabels.map((n,i) => <div key={i} className="number-label">{n}</div>)}</div>
-        <div className="chessboard">{squares}</div>
-        <div className="letter-labels">{letterLabels.map((l,i) => <div key={i} className="letter-label">{l}</div>)}</div>
+            <div className="chessboard">{squares}</div>
+            <div className="number-labels">{numberLabels.map((n,i) => <div key={i} className="number-label">{n}</div>)}</div>
+            <div className="letter-labels">{letterLabels.map((l,i) => <div key={i} className="letter-label">{l}</div>)}</div>
         </div>
     );
 };

@@ -1,7 +1,23 @@
 .control-panel {
-    flex: 0 0 65%;
+    flex: 1;
     background-color: #ff6b6b;
-    border-radius: 10px;
+    border-radius: 1.5%;
+
+    border: 1px solid #4cff76;
+    height: 100%;
 
     transition: flex 0.3s ease, opacity 0.3s ease;
+    padding: 1.2rem;
+
+    /* display: flex;
+    flex-direction: column;
+    box-sizing: border-box; */
+}
+
+@media (max-aspect-ratio: 31/20) {
+    .control-panel {
+        flex: none;
+        width: 100%;
+        height: auto;
+    }
 }

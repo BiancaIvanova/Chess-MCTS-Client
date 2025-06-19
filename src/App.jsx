@@ -29,9 +29,7 @@ function App() {
         style={{ visibility: blocked ? 'hidden' : 'visible' }}
         aria-hidden={blocked ? 'true' : 'false'}
       >
-        <div className="board-wrapper">
-          <Chessboard setLoading={setLoading} setErrorText={setErrorText} setShowMessage={setShowMessage} />
-        </div>
+        <Chessboard setLoading={setLoading} setErrorText={setErrorText} setShowMessage={setShowMessage} />
         <ControlPanel />
       </div>
 

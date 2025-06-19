@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './Chessboard.css';
-import { useUIState } from './UIStateContext';
+import { useUIState } from '../status/UIStateContext';
+import { fetchBoardState } from '../api/useFetchBoardState';
 
 const ERROR_THRESHOLD = 6 // attempts before giving up
 
@@ -41,12 +42,9 @@ const Chessboard = ({ setLoading, setErrorText, setShowMessage }) => {
             setBlocked(true);
         }
 
-        fetch('http://localhost:8080/api/state')
-            .then(res => res.json())
-            .then(data => {
-
-                if (!data.boardFEN) throw new Error('No board data returned');
-                setBoardState(parseFEN(data.boardFEN));
+        fetchBoardState()
+            .then(parsedBoard => {
+                setBoardState(parsedBoard);
                 setHasLoaded(true);
                 setLastFetchOk(true);
                 failureCount.current = 0;
@@ -144,23 +142,5 @@ const Chessboard = ({ setLoading, setErrorText, setShowMessage }) => {
     );
 };
 
-const parseFEN = (fen) => {
-    const rows = fen.split(' ')[0].split('/');
-    return rows.map(row => {
-        const boardRow = [];
-        for (let char of row) {
-        if (!isNaN(char)) {
-            for (let i = 0; i < parseInt(char); i++) boardRow.push(null);
-        } else {
-            const isWhite = char === char.toUpperCase();
-            const color = isWhite ? 'w' : 'b';
-            const piece = char.toLowerCase();
-            const pieceMap = { p: 'P', r: 'R', n: 'N', b: 'B', q: 'Q', k: 'K' };
-            boardRow.push(color + pieceMap[piece]);
-        }
-        }
-        return boardRow;
-    });
-};
 
 export default Chessboard;

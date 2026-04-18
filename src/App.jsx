@@ -1,20 +1,29 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
 import { GitHubLink, SideMenuButton, ThemeToggle } from './floating/FloatingUI';
 import Chessboard from './ui/Chessboard';
 import ControlPanel from './ui/ControlPanel';
+import SideMenu from './ui/SideMenu';
 import ErrorDisplay from './status/ErrorDisplay';
 import { useUIState } from './status/UIStateContext';
- 
+
 function App() {
-  const { blocked } = useUIState(); // blocked = show loading/error
+  const { blocked } = useUIState();
+
   const [loading, setLoading] = useState(true);
   const [errorText, setErrorText] = useState('');
   const [showMessage, setShowMessage] = useState(false);
 
+  const [sideMenuOpen, setSideMenuOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState('play');
+
+  const handleSelectPage = (page) => {
+    setCurrentPage(page);
+    console.log('Selected page:', page);
+  };
+
   return (
     <>
-      {/* Show overlay when in 'blocked' state */}
       {blocked && (
         <ErrorDisplay
           loading={loading}
@@ -24,21 +33,36 @@ function App() {
         />
       )}
 
+      <SideMenu
+        open={sideMenuOpen}
+        onClose={() => setSideMenuOpen(false)}
+        onSelectPage={handleSelectPage}
+      />
+
       <div
         className="app-main"
         style={{ visibility: blocked ? 'hidden' : 'visible' }}
         aria-hidden={blocked ? 'true' : 'false'}
       >
-        <Chessboard setLoading={setLoading} setErrorText={setErrorText} setShowMessage={setShowMessage} />
-        <ControlPanel />
+        <Chessboard
+          setLoading={setLoading}
+          setErrorText={setErrorText}
+          setShowMessage={setShowMessage}
+        />
+
+        <ControlPanel currentPage={currentPage} />
       </div>
 
-      {/* Keep floating UI elements always visible and able to be interacted with */}
-      <GitHubLink/>
-      <ThemeToggle/>
-      {!blocked && <SideMenuButton/>}
+      <GitHubLink />
+      <ThemeToggle />
+
+      {!blocked && (
+        <SideMenuButton
+          onClick={() => setSideMenuOpen(!sideMenuOpen)}
+        />
+      )}
     </>
-  )
+  );
 }
- 
-export default App
+
+export default App;

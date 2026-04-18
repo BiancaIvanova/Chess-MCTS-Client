@@ -1,6 +1,6 @@
 .control-panel {
     flex: 1;
-    background-color: #ff6b6b;
+    background-color: #ffffff;
     border-radius: 1.5%;
 
     border: 1px solid #4cff76;
@@ -9,9 +9,6 @@
     transition: flex 0.3s ease, opacity 0.3s ease;
     padding: 1.2rem;
 
-    /* display: flex;
-    flex-direction: column;
-    box-sizing: border-box; */
 }
 
 @media (max-aspect-ratio: 31/20) {

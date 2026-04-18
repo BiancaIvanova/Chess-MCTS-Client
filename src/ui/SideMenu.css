@@ -1,0 +1,121 @@
+.side-menu {
+    position: fixed;
+    top: 0.4rem;
+    left: 0.4rem;
+
+    width: min(78vw, 270px);
+    height: 98vh;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    padding: 1.0rem;
+    box-sizing: border-box;
+
+    border-radius: 7px;
+
+    transform: translateX(-120%);
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+            transform 0.28s ease,
+            opacity 0.28s ease;
+
+    z-index: 900;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.28);
+}
+
+.side-menu.open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+body.light-mode .side-menu {
+    background-color: #ffffff;
+    color: #161616;
+}
+
+body.dark-mode .side-menu {
+    background-color: #262626;
+    color: #ffffff;
+}
+
+.side-menu-title {
+    margin: 0 0 1.4rem 0;
+    font-size: 1.4rem;
+}
+
+.side-menu-option {
+    width: 100%;
+    padding: 0.7rem 0.8rem;
+
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    border-width: 1px;
+    border-color: #cccccc;
+    border-radius: 5px;
+
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+            background-color 0.2s ease,
+            transform 0.2s ease;
+}
+
+.side-menu-option:hover {
+    transform: translateX(4px);
+}
+
+.side-menu-option-icon {
+    width: 1.05rem;
+    min-width: 1.05rem;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+}
+
+body.light-mode .side-menu-option {
+    background-color: #ffffff;
+    color: #161616;
+}
+
+body.light-mode .side-menu-option:hover {
+    background-color: #f0f0f0;
+}
+
+body.dark-mode .side-menu-option {
+    background-color: #2b2b2b;
+    color: #ffffff;
+}
+
+body.dark-mode .side-menu-option:hover {
+    background-color: #343434;
+}
+
+.side-menu-backdrop {
+    position: fixed;
+    inset: 0;
+
+    background-color: rgba(0, 0, 0, 0.18);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.28s ease;
+
+    z-index: 800;
+}
+
+.side-menu-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+}

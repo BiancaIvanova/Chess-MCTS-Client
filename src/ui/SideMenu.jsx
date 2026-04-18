@@ -1,38 +1,50 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './FloatingUI.css'; // Reuse your existing styles
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChess, faChessBoard, faChartLine } from '@fortawesome/free-solid-svg-icons';
+import './SideMenu.css';
 
-export const HamburgerMenu = () => {
-    const [open, setOpen] = useState(false);
-    const paneRef = useRef();
-
-    // Close if clicking outside
-    useEffect(() => {
-        const close = (e) => {
-            if (paneRef.current && !paneRef.current.contains(e.target)) {
-                setOpen(false);
-            }
-        };
-        if (open) document.addEventListener('mousedown', close);
-        return () => document.removeEventListener('mousedown', close);
-    }, [open]);
+const SideMenu = ({ open, onClose, onSelectPage }) => {
+    const handleMenuClick = (page) => {
+        onSelectPage(page);
+        onClose();
+    };
 
     return (
         <>
-            <div className="hamburger-toggle">
-                <button
-                    className={open ? 'active' : ''}
-                    onClick={() => setOpen(!open)}
-                    aria-label="Menu"
-                >
-                    <div className="svg-icon menu-icon" />
-                </button>
-            </div>
+            <div
+                className={`side-menu-backdrop ${open ? 'open' : ''}`}
+                onClick={onClose}
+            />
 
-            {open && (
-                <div className="hamburger-pane" ref={paneRef}>
-                    <p style={{ color: 'white', padding: '1rem' }}>Menu pane</p>
-                </div>
-            )}
+            <nav className={`side-menu ${open ? 'open' : ''}`}>
+                <h2 className="side-menu-title"></h2>
+
+                <button
+                    className="side-menu-option"
+                    onClick={() => handleMenuClick('play')}
+                >
+                    <FontAwesomeIcon className="side-menu-option-icon" icon={faChess} />
+                    Play Game
+                </button>
+
+                <button
+                    className="side-menu-option"
+                    onClick={() => handleMenuClick('analysis')}
+                >
+                    <FontAwesomeIcon className="side-menu-option-icon" icon={faChessBoard} />
+                    Analysis
+                </button>
+
+                <button
+                    className="side-menu-option"
+                    onClick={() => handleMenuClick('statistics')}
+                >
+                    <FontAwesomeIcon className="side-menu-option-icon" icon={faChartLine} />
+                    Statistics
+                </button>
+            </nav>
         </>
     );
 };
+
+export default SideMenu;

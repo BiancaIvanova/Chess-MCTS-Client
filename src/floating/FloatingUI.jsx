@@ -99,15 +99,15 @@ export const ThemeToggle = () => {
     )
 }
 
-export const SideMenuButton = ({onClick}) => {
+export const SideMenuButton = ({ onClick }) => {
     return (
         <div className="side-menu-button-container">
             <button
-                onClick={(onClick)}
+                onClick={onClick}
                 aria-label="Open side menu"
             >
                 <div className="svg-icon side-menu-icon"/>
             </button>
         </div>
-    )
-}
+    );
+};

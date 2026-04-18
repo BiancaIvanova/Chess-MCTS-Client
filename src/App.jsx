@@ -4,8 +4,10 @@ import { GitHubLink, SideMenuButton, ThemeToggle } from './floating/FloatingUI';
 import Chessboard from './ui/Chessboard';
 import ControlPanel from './ui/ControlPanel';
 import SideMenu from './ui/SideMenu';
+import StartGameDialog from './ui/StartGameDialog';
 import ErrorDisplay from './status/ErrorDisplay';
 import { useUIState } from './status/UIStateContext';
+import { startGame } from './api/gameApi';
 
 function App() {
   const { blocked } = useUIState();
@@ -16,10 +18,28 @@ function App() {
 
   const [sideMenuOpen, setSideMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState('play');
+  const [startGameDialogOpen, setStartGameDialogOpen] = useState(false);
 
   const handleSelectPage = (page) => {
+    if (page === 'play') {
+      setStartGameDialogOpen(true);
+      return;
+    }
+
     setCurrentPage(page);
     console.log('Selected page:', page);
+  };
+
+  const handleStartGame = async (settings) => {
+    try {
+      await startGame(settings);
+
+      setCurrentPage('play');
+      setStartGameDialogOpen(false);
+    } catch (error) {
+      setErrorText('Unable to start game');
+      setShowMessage(true);
+    }
   };
 
   return (
@@ -37,6 +57,12 @@ function App() {
         open={sideMenuOpen}
         onClose={() => setSideMenuOpen(false)}
         onSelectPage={handleSelectPage}
+      />
+
+      <StartGameDialog
+        open={startGameDialogOpen}
+        onClose={() => setStartGameDialogOpen(false)}
+        onStartGame={handleStartGame}
       />
 
       <div

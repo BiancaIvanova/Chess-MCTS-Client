@@ -1,6 +1,6 @@
 .primary-button {
   padding: 0.6rem 1.2rem;
-  background-color: #646cff;
+  background-color: #52528d;
   color: white;
   font-weight: 600;
   font-size: 1rem;
@@ -11,5 +11,5 @@
 }
 
 .primary-button:hover {
-  background-color: #535bf2;
+  background-color: rgb(56, 56, 97);
 }

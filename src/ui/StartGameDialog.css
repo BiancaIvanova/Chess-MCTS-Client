@@ -1,0 +1,144 @@
+.start-game-dialog-backdrop {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.35);
+
+    z-index: 1200;
+}
+
+.start-game-dialog {
+    width: min(90vw, 430px);
+
+    padding: 1.4rem;
+
+    border-radius: 12px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32);
+
+    animation: start-game-dialog-in 0.22s ease;
+}
+
+body.light-mode .start-game-dialog {
+    background-color: #ffffff;
+    color: #161616;
+}
+
+body.dark-mode .start-game-dialog {
+    background-color: #262626;
+    color: #ffffff;
+}
+
+.start-game-title {
+    margin: 0 0 1.2rem 0;
+    font-size: 1.5rem;
+}
+
+.start-game-section {
+    margin-bottom: 1.1rem;
+}
+
+.start-game-label {
+    display: block;
+    margin-bottom: 0.45rem;
+
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.start-game-button-row,
+.start-game-button-column {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.start-game-button-column {
+    flex-direction: column;
+}
+
+.start-game-choice {
+    flex: 1;
+
+    padding: 0.75rem 0.9rem;
+
+    border: 1px solid #cfcfcf;
+    border-radius: 7px;
+
+    font-weight: 600;
+    cursor: pointer;
+
+    transition:
+            background-color 0.2s ease,
+            transform 0.2s ease,
+            border-color 0.2s ease;
+}
+
+.start-game-choice:hover {
+    transform: translateY(-1px);
+}
+
+body.light-mode .start-game-choice {
+    background-color: #ffffff;
+    color: #161616;
+}
+
+body.dark-mode .start-game-choice {
+    background-color: #2b2b2b;
+    color: #ffffff;
+}
+
+.start-game-choice.selected {
+    border-color: #646cff;
+    background-color: #646cff;
+    color: #ffffff;
+}
+
+.start-game-warning {
+    margin: 0.4rem 0 0 0;
+
+    font-size: 0.85rem;
+    color: #c40d00;
+}
+
+.start-game-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.7rem;
+
+    margin-top: 1.4rem;
+}
+
+.start-game-cancel {
+    padding: 0.6rem 1rem;
+
+    border: none;
+    border-radius: 6px;
+
+    font-weight: 600;
+    cursor: pointer;
+}
+
+body.light-mode .start-game-cancel {
+    background-color: #eeeeee;
+    color: #161616;
+}
+
+body.dark-mode .start-game-cancel {
+    background-color: #343434;
+    color: #ffffff;
+}
+
+@keyframes start-game-dialog-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

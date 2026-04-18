@@ -1,7 +1,12 @@
 export async function fetchBoardState() {
     const res = await fetch('http://localhost:8080/api/state');
+
     const data = await res.json();
-    if (!data.boardFEN) throw new Error('No board data returned');
+
+    if (!data.boardFEN) {
+        throw new Error('No board data returned');
+    }
+
     return parseFEN(data.boardFEN);
 }
 
